@@ -85,12 +85,13 @@ Hand out a different link per place it is published:
 
 | Where the link lives | Link | Shows up as |
 | --- | --- | --- |
+| LinkedIn — profile custom button | `https://SITE/lib` | page `/lib` |
 | LinkedIn — Featured section | `https://SITE/li` | page `/li` |
 | LinkedIn — contact info | `https://SITE/lic` | page `/lic` |
 | CV sent to a company | `https://SITE/r/<company>` | page `/r/<company>` |
 | Anywhere else | `https://SITE/?ref=<tag>` | custom event (Pro plan only) |
 
-`vercel.json` rewrites `/li`, `/lic` and `/r/:code` to the same single page, so those
+`vercel.json` rewrites `/lib`, `/li`, `/lic` and `/r/:code` to the same single page, so those
 paths appear in the Analytics **Pages** list — page views are recorded on every
 plan, unlike custom events, which need Pro.
 
