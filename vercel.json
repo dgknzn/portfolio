@@ -9,6 +9,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/lic",
+      "destination": "/index.html"
+    },
+    {
       "source": "/r/:code",
       "destination": "/index.html"
     }
