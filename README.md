@@ -81,17 +81,24 @@ a real deployment stays same-origin.
 tag. It fires once per browser session, so anchor clicks and reloads do not
 inflate a single visit.
 
-Hand out a different tag per place the link is published:
+Hand out a different link per place it is published:
 
-| Where the link lives | Link |
-| --- | --- |
-| LinkedIn profile | `https://SITE/?ref=linkedin` |
-| CV sent to a company | `https://SITE/?ref=<company>` |
-| E-mail signature | `https://SITE/?ref=email` |
+| Where the link lives | Link | Shows up as |
+| --- | --- | --- |
+| LinkedIn profile | `https://SITE/li` | page `/li` |
+| CV sent to a company | `https://SITE/r/<company>` | page `/r/<company>` |
+| Anywhere else | `https://SITE/?ref=<tag>` | custom event (Pro plan only) |
 
-The tag is our own label on a link we handed out, so it identifies the channel —
-which company opened the CV — never the person visiting. Values are lowercased,
-capped at 40 characters, and survive the `?lang=` rewrite.
+`vercel.json` rewrites `/li` and `/r/:code` to the same single page, so those
+paths appear in the Analytics **Pages** list — page views are recorded on every
+plan, unlike custom events, which need Pro.
+
+The `?ref=` custom event in `useReferralSource.ts` stays in place and starts
+reporting if the project is ever upgraded; it also records the browser referrer
+when no tag is present.
+
+A link is our own label on something we handed out, so it identifies the
+channel — which company opened the CV — never the person visiting.
 
 ## Notes
 
